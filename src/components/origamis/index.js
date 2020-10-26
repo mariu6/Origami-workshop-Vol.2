@@ -26,9 +26,9 @@ class Origamis extends Component {
     renderOrigamis() {
         const { origamis } = this.state
 
-        return origamis.map((origami) => {
+        return origamis.map((origami, index) => {
             return (
-                <Origami key={origami._id} {...origami} />    // ключът трябва да работи тук и не може да се предаде направо като пропс, а обектът огригами се предава към Оригами, но там се взема само дескрипшън
+                <Origami key={origami._id} index ={index} {...origami} />    // ключът трябва да работи тук и не може да се предаде направо като пропс, а обектът огригами се предава към Оригами, но там се взема само дескрипшън
             )
         })
     }

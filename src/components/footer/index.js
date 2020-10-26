@@ -1,16 +1,17 @@
 import styles from './index.module.css';
 import Link from "../link";
 import bird from "../../images/blue-origami-bird-flipped.png";
+import getNavigations from "../../utils/navigation";
 
 const Footer = () => {
+    const links = getNavigations();
     return (
         <footer className={styles.footer}>
-            <Link title="Going to 1" href="#" />
-            <Link title="Going to 2" href="#" />
-            <Link title="Going to 3" href="#" />
-            <Link title="Going to 4" href="#" />
-            <Link title="Going to 5" href="#" />
-            <Link title="Going to 6" href="#" />
+            {links.map(navElement => {
+                return (
+                    <Link title={navElement.title} href={navElement.link} type="footer" />
+                )
+            })}
             <img src={bird} alt="origami" />
             <p>Software University 2020</p>
         </footer>
