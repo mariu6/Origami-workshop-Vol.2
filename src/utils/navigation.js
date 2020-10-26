@@ -10,16 +10,16 @@ const getNavigation = (userId) => {
             link: "/share"
         },
         {
-            title: "Login",
-            link: "/login"
-        },
-        {
             title: "Profile",
             link: `/profile/${userId}`
         },
         {
             title: "Register",
             link: "/register"
+        },
+        {
+            title: "Login",
+            link: "/login"
         }
     ];
 
