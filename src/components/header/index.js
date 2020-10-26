@@ -8,9 +8,9 @@ const Header = () => {
     return (
         <header className={styles.navigation}>
             <img src={bird} alt="origami" />
-            {links.map(navElement => {
+            {links.map(nav => {
                 return (
-                    <Link title={navElement.title} href={navElement.link} type="header" />
+                    <Link key={nav.title} title={nav.title} href={nav.link} type="header" />
                 )
             })}
 
