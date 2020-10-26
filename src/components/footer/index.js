@@ -7,9 +7,9 @@ const Footer = () => {
     const links = getNavigations();
     return (
         <footer className={styles.footer}>
-            {links.map(navElement => {
+            {links.map(nav => {
                 return (
-                    <Link title={navElement.title} href={navElement.link} type="footer" />
+                    <Link key={nav.title} title={nav.title} href={nav.link} type="footer" />
                 )
             })}
             <img src={bird} alt="origami" />
