@@ -18,16 +18,16 @@ const LazyNavigation = () => {
 
     return (
         <Router>
-            <Switch>
-                <Suspense fallback={<h1>Loading...</h1>}>
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Switch>
                     <Route path="/" exact component={LazyPublications} />
                     <Route path="/share" component={LazyShareThoughtsPage} />
                     <Route path="/register" component={LazyRegisterPage} />
                     <Route path="/login" component={LazyLoginPage} />
                     <Route path="/profile/:userid" component={LazyProfilePage} />
                     <Route component={LazyErrorPage} />
-                </Suspense>
-            </Switch>
+                </Switch>
+            </Suspense>
         </Router>
     )
 }
