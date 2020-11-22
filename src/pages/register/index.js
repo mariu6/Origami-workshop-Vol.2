@@ -4,6 +4,7 @@ import PageLayout from "../../components/page-layout";
 import SubmitButton from "../../components/submit-button";
 import Title from "../../components/title";
 import authenticate from "../../utils/authenticate";
+import UserContext from "../../Context";
 
 class Register extends Component {
     constructor(props) {
@@ -15,6 +16,8 @@ class Register extends Component {
             rePassword: ""
         }
     }
+
+    static contextType = UserContext;   // за да можем да достъпим каквото сме подали в контекста (в случая - user и _id)
 
     handleChange = (event, type) => {
         const newState = {};
@@ -31,8 +34,9 @@ class Register extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         const { username, password, rePassword } = this.state;
-        const onSuccess = () => {
-            console.log("Login Successful!");
+        const onSuccess = (user) => {
+            console.log("Register & Login Successful!");
+            this.context.logIn(user);
             this.props.history.push("/");
         };
         const onFailure = (err) => console.log(`Login Error: ${err}`);

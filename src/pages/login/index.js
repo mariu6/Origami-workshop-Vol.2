@@ -3,6 +3,7 @@ import Input from "../../components/input";
 import PageLayout from "../../components/page-layout";
 import SubmitButton from "../../components/submit-button";
 import Title from "../../components/title";
+import UserContext from "../../Context";
 import authenticate from "../../utils/authenticate";
 // import axios from "axios";
 
@@ -16,6 +17,8 @@ class Login extends Component {
         }
     }
 
+    static contextType = UserContext;   // сетвам context от UserContext
+
     handleChange = (event, type) => {
         const newState = {};
         newState[type] = event.target.value;
@@ -25,8 +28,9 @@ class Login extends Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         const { username, password } = this.state;
-        const onSuccess = () => {
-            console.log("Login Successful!");
+        const onSuccess = (user) => {
+            console.log(`Login Successful!`,this.context);
+            this.context.logIn(user);
             this.props.history.push("/");
         };
         const onFailure = (err) => console.log(`Login Error: ${err}`);
