@@ -19,7 +19,10 @@ const authenticate = async (url, body, onSuccess, onFailure) => {
         const responseJson = await promise.json();
         // console.log(responseJson);
         if (responseJson.username && authToken) {   // ако имаме юзер и имаме ауттокен
-            onSuccess();          // значи сме лог-иннати и можем да пренасочим към началната страница
+            onSuccess({                             // значи сме лог-иннати и можем да пренасочим към началната страница
+                username: responseJson.username,
+                id: responseJson._id
+            });          
         } else {
             onFailure();    // не ми харесва така, но Валентин така го написа
         }
