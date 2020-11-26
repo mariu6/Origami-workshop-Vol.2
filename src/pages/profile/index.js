@@ -3,6 +3,8 @@ import { Component } from "react";
 import PageLayout from "../../components/page-layout";
 import Title from "../../components/title";
 import Origamis from "../../components/origamis";
+import UserContext from "../../Context";
+import getCookieValue from "../../utils/cookieParser";
 
 class Profile extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class Profile extends Component {
       this.props.history.push("/error");             // Ако не намира потребителя или има някаква друга грешка в базата, да прати към error page
     }
     const user = await promise.json();
-    // console.log(user);
+    // console.log(`getUser: ${user.username}`);
     this.setState({
       username: user.username,
       posts: user.posts && user.posts.length        //If {user.posts} can be converted to true, returns {user.posts.length}; else, returns {user.posts}
@@ -27,8 +29,20 @@ class Profile extends Component {
   }
 
   componentDidMount() {      // за рекуест за юзъра
-    console.log(this.props.match.params.userid)
+    console.log(`this.props.match.params.userid:   ${this.props.match.params.userid}`)
     this.getUser(this.props.match.params.userid);
+    
+    // let token = this.props.match.params.userid;
+    // if (token === "undefined") {
+    //   token = getCookieValue("x-auth-token");
+    // }
+    // this.getUser(token)
+  }
+
+  static contextType = UserContext;
+  logOut = () => {
+    this.context.logOut();   // 
+    this.props.history.push("/");
   }
 
   render() {
@@ -48,6 +62,8 @@ class Profile extends Component {
         <div>
           <p>User: {username}</p>
           <p>Posts: {posts}</p>
+
+          <button onClick={this.logOut}>Logout</button>
         </div>
         <Origamis length={3} />
       </PageLayout>
