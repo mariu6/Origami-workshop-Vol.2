@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 import Link from '../link';
 import getNavigations from "../../utils/navigation";
-import { Component } from 'react';
+// import { Component } from 'react';
 import { useContext } from "react";
 import UserContext from "../../Context";
 
@@ -26,9 +26,9 @@ import UserContext from "../../Context";
 // }
 
 const Aside = () => {
-    const { loggedIn, user } = useContext(UserContext);  // ползвам хук
+    const { user } = useContext(UserContext);  // ползвам хук
 
-    const links = getNavigations(loggedIn, user);
+    const links = getNavigations(user);
     return (
         <aside className={styles.aside}>
             {links.map(nav => {

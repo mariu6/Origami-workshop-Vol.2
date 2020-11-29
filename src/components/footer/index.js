@@ -9,8 +9,8 @@ class Footer extends Component {
     static contextType = UserContext;      // взимам информацията от контекста
 
     render() {
-        const { loggedIn, user } = this.context;
-        const links = getNavigations(loggedIn, user);    // имам различни масиви в зависимост дали съм гост/юзър
+        const { user } = this.context;
+        const links = getNavigations(user);    // имам различни масиви в зависимост дали съм гост/юзър
 
         return (
             <footer className={styles.footer}>

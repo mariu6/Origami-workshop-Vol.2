@@ -4,7 +4,7 @@ import PageLayout from "../../components/page-layout";
 import Title from "../../components/title";
 import Origamis from "../../components/origamis";
 import UserContext from "../../Context";
-import getCookieValue from "../../utils/cookieParser";
+// import getCookieValue from "../../utils/cookieParser";
 
 class Profile extends Component {
   constructor(props) {
