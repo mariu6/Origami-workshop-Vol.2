@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import getCookie from "../../utils/cookieParser";
 import getOrigami from "../../utils/origami";
+import ErrorBoundary from "../../ErrorBoundary";
 
 const App = () => {
   const [publication, setPublication] = useState("");
@@ -14,7 +15,7 @@ const App = () => {
   const handleSubmit = async () => {
     // console.log("Getting into handleSubmit!");
     const promise = await fetch("http://localhost:9999/api/origami", {
-      method:"POST",
+      method: "POST",
       body: JSON.stringify({
         description: publication
       }),
@@ -36,7 +37,9 @@ const App = () => {
       <TextArea placeholder="Publication..." value={publication} onChange={e => setPublication(e.target.value)} />
       <RedSubmitButton title="Post" onClick={handleSubmit} />
       <div>
-        <Origamis length={3} updatedOrigami={updatedOrigami}/>
+        <ErrorBoundary>
+          <Origamis length={3} updatedOrigami={updatedOrigami} />
+        </ErrorBoundary>
       </div>
     </PageLayout>
   );

@@ -6,6 +6,7 @@ import Origamis from "../../components/origamis";
 import UserContext from "../../Context";
 // import getCookieValue from "../../utils/cookieParser";
 import { useParams, useHistory } from "react-router-dom";
+import ErrorBoundary from "../../ErrorBoundary";
 
 
 const ProfilePage = () => {
@@ -26,7 +27,7 @@ const ProfilePage = () => {
     setPosts(user.posts && user.posts.length);   // ако няма постове, искането за дължина на масива ще хвърли грешка, затова проверяваме дали има posts
   }, [params.userid, history]);
 
-  useEffect( () => {
+  useEffect(() => {
     getData();
   }, [getData]);
 
@@ -51,7 +52,9 @@ const ProfilePage = () => {
 
         <button onClick={logOut}>Logout</button>
       </div>
-      <Origamis length={3} />
+      <ErrorBoundary>
+        <Origamis length={3} />
+      </ErrorBoundary>
     </PageLayout>
   )
 }

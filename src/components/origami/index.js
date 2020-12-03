@@ -8,7 +8,7 @@ const Origami = ({ description, author, index }) => {
             <img src={bird} alt="ORIGAMI" />
             <p className={styles.description}>
                 <span>{index} - </span>
-                {description}
+                <span  dangerouslySetInnerHTML={{__html: description}}/>
             </p>
             <div>
                 <span>
