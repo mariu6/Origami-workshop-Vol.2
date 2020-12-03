@@ -20,7 +20,7 @@ const Origamis = (props) => {
             return (
                 <Origami key={origami._id} index={index} {...origami} />    // ключът трябва да работи тук и не може да се предаде направо като пропс, а обектът огригами се предава към Оригами, но там се взема само дескрипшън
             )
-        }).slice(origamis.length - number, origamis.length);
+        }).slice(origamis.length - number, origamis.length);  // отрязвам от (края минус номер) => до края
     }
 
     return (
