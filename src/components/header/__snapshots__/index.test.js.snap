@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render authenticated routes 1`] = `
+<header
+  className="navigation"
+>
+  <img
+    alt="origami"
+    src="white-origami-bird.png"
+  />
+  <div
+    className="listItem"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Publications
+    </a>
+  </div>
+  <div
+    className="listItem"
+  >
+    <a
+      href="/share"
+      onClick={[Function]}
+    >
+      Share your thoughts
+    </a>
+  </div>
+  <div
+    className="listItem"
+  >
+    <a
+      href="/profile/123"
+      onClick={[Function]}
+    >
+      Profile
+    </a>
+  </div>
+</header>
+`;
+
+exports[`Header Component should render non-authenticated routes 1`] = `
+<header
+  className="navigation"
+>
+  <img
+    alt="origami"
+    src="white-origami-bird.png"
+  />
+  <div
+    className="listItem"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Publications
+    </a>
+  </div>
+  <div
+    className="listItem"
+  >
+    <a
+      href="/register"
+      onClick={[Function]}
+    >
+      Register
+    </a>
+  </div>
+  <div
+    className="listItem"
+  >
+    <a
+      href="/login"
+      onClick={[Function]}
+    >
+      Login
+    </a>
+  </div>
+</header>
+`;
